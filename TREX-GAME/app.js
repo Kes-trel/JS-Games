@@ -28,7 +28,6 @@ function jump () {
         //move down
         if (count === 15) {
             clearInterval(timerId)
-            console.log("down");
             let downTimerId = setInterval (function () {
                 if (count === 0) {
                     clearInterval(downTimerId)
@@ -42,12 +41,10 @@ function jump () {
         }
         
         //move up
-        console.log("movingup");
         position +=30;
         count++
         position = position * gravity
         dino.style.bottom = position + "px";
-        console.log(dino.style.bottom)
     },20)
 }
 
@@ -55,7 +52,7 @@ function generateObstacles () {
     let randomTime = Math.random() * 4000
     let obstaclePosition = 1000
     const obstacle = document.createElement("div")
-    obstacle.classList.add("obstacle")
+    if (isGameOver === false) obstacle.classList.add("obstacle")
     grid.appendChild(obstacle)
     obstacle.style.left = obstaclePosition + "px"
 
@@ -64,6 +61,10 @@ function generateObstacles () {
             clearInterval(timerId)
             alert.innerHTML = "GAME OVER"
             isGameOver = true
+            //remove all children
+            while (grid.firstChild) {
+                grid.removeChild(grid.lastChild)
+            }
         }
         
         
