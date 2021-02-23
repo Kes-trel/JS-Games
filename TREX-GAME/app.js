@@ -49,9 +49,10 @@ function jump () {
 }
 
 function generateObstacles () {
-    let randomTime = Math.random() * 4000
+    let randomTime = Math.random() * 2000
     let obstaclePosition = 1000
     const obstacle = document.createElement("div")
+    obstacle.innerHTML = "<img src='https://www.bostondynamics.com/sites/default/files/2019-09/spot-sm.png' alt=''>"
     if (isGameOver === false) obstacle.classList.add("obstacle")
     grid.appendChild(obstacle)
     obstacle.style.left = obstaclePosition + "px"
