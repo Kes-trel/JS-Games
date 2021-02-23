@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const dino = document.querySelector(".dino")
 const grid = document.querySelector(".grid")
+const alert = document.getElementById("alert")
 
 let isJumping = false
 let gravity = 0.9
@@ -61,7 +62,7 @@ function generateObstacles () {
     let timerId = setInterval (function () {
         if (obstaclePosition > 0 && obstaclePosition < 60 && position < 60) {
             clearInterval(timerId)
-            alert("GAME OVER")
+            alert.innerHTML = "GAME OVER"
             isGameOver = true
         }
         
@@ -69,12 +70,10 @@ function generateObstacles () {
         obstaclePosition -=10
         obstacle.style.left = obstaclePosition + "px"
     },20)
-    if (isGameOver = false) {
-        setTimeout(generateObstacles, randomTime)
-    }
+    if (isGameOver === false) setTimeout(generateObstacles, randomTime)
 }
 
-// generateObstacles()
+generateObstacles()
 
 
 
